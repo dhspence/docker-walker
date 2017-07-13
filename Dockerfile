@@ -19,7 +19,10 @@ RUN apt-get update -y && apt-get install -y \
     tzdata \
     unzip \
     wget \
-    zlib1g-dev
+    zlib1g-dev \
+    perl \
+    expat \
+    libexpat-dev
 
 ##########
 #Haley's GATK 3.6#
@@ -27,8 +30,8 @@ RUN apt-get update -y && apt-get install -y \
 #ENV maven_package_name apache-maven-3.3.9
 #RUN cd /tmp/ && wget -q http://mirror.nohup.it/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
 
-RUN cd /opt/ \
-    && git clone --recursive https://github.com/abelhj/gatk.git
+WORKDIR /opt
+RUN git clone --recursive https://github.com/abelhj/gatk.git
     
 #RUN cd /opt/ && unzip /tmp/${maven_package_name}-bin.zip \
 #    && rm -rf /tmp/${maven_package_name}-bin.zip LICENSE NOTICE README.txt \
