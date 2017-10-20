@@ -31,7 +31,7 @@ RUN apt-get update -y && apt-get install -y \
 #RUN cd /tmp/ && wget -q http://mirror.nohup.it/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
 
 WORKDIR /opt
-RUN git clone --recursive https://github.com/abelhj/gatk.git
+RUN git clone -b dev --recursive https://github.com/abelhj/gatk.git
     
 #RUN cd /opt/ && unzip /tmp/${maven_package_name}-bin.zip \
 #    && rm -rf /tmp/${maven_package_name}-bin.zip LICENSE NOTICE README.txt \
