@@ -52,4 +52,9 @@ RUN ./configure --enable-plugins --prefix=$SAMTOOLS_INSTALL_DIR && \
 WORKDIR /
 RUN ln -s $SAMTOOLS_INSTALL_DIR/bin/samtools /usr/bin/samtools && \
   rm -rf /tmp/samtools-1.3.1
-  
+ 
+WORKDIR /opt
+
+ADD CalculateContamination.pl
+
+
