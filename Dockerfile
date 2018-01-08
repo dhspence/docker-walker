@@ -55,6 +55,6 @@ RUN ln -s $SAMTOOLS_INSTALL_DIR/bin/samtools /usr/bin/samtools && \
  
 WORKDIR /opt
 
-ADD CalculateContamination.pl
+ADD CalculateContamination.pl /opt/
 
 
