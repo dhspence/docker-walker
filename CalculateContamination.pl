@@ -7,7 +7,7 @@ open(F,$ARGV[0]) || die "Cant open Haplotect summary file!";
 $_ = <F>;
 chomp;
 my @l = split("\t",$_);
-my ($sampleid,$totalSites,$meanCov) = ($l[0],$l[7],$l[8]);
+my ($sampleid,$mle,$mle_ci,$totalSites,$meanCov) = ($l[0],$l[1],$l[2],$l[7],$l[8]);
 close F;
 
 my $informativeSites = 0;
@@ -42,5 +42,5 @@ while(<F>){
     }   
 }
 
-print join("\t",qw(#sample totalSites informativeSites meanCoverage contaminatingHaplotypeCount totalReads contaminationEstimate)),"\n";
-print join("\t",$sampleid,$totalSites,$informativeSites,$meanCov,$contamCounts,$totalReads,$contamCounts/$totalReads),"\n";
+print join("\t",qw(#sample totalSites informativeSites meanCoverage contaminatingHaplotypeCount totalReads contaminationEstimate snpEstimate snpEstimateCI)),"\n";
+print join("\t",$sampleid,$totalSites,$informativeSites,$meanCov,$contamCounts,$totalReads,$contamCounts/$totalReads,$mle,$mle_ci),"\n";
