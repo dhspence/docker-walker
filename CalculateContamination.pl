@@ -43,4 +43,4 @@ while(<F>){
 }
 
 print join("\t",qw(#sample totalSites informativeSites meanCoverage contaminatingHaplotypeCount totalReads contaminationEstimate snpEstimate snpEstimateCI)),"\n";
-print join("\t",$sampleid,$totalSites,$informativeSites,$meanCov,$contamCounts,$totalReads,$contamCounts/$totalReads,$mle,$mle_ci),"\n";
+print join("\t",$sampleid,$totalSites,$informativeSites,$meanCov,$contamCounts,$totalReads,2 * $contamCounts/$totalReads,$mle,$mle_ci),"\n";
