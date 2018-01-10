@@ -27,14 +27,16 @@ while(<F>){
 
     my %haps = ();
     while($l[10] =~ /([ACGT]{2}):(\d+)/g){
-	$haps{$1} = $2 if $2 > 0;
+	$haps{$1} = $2 if $2 > 1;
     }
     if (scalar keys %haps == 3){
+#	print join("\t",@l),"\n";
 	$informativeSites++;
 	my @c = sort { $a <=> $b } values %haps;
 	$contamCounts += $c[0];
 	$totalReads += $l[9];
     } elsif (scalar keys %haps == 4){
+#	print join("\t",@l),"\n";
 	$informativeSites++;
 	my @c = sort { $a <=> $b } values %haps;
 	$contamCounts += (($c[0]+$c[1]) / 2);
@@ -43,4 +45,4 @@ while(<F>){
 }
 
 print join("\t",qw(#sample totalSites informativeSites meanCoverage contaminatingHaplotypeCount totalReads contaminationEstimate snpEstimate snpEstimateCI)),"\n";
-print join("\t",$sampleid,$totalSites,$informativeSites,$meanCov,$contamCounts,$totalReads,2 * $contamCounts/$totalReads,$mle,$mle_ci),"\n";
+print join("\t",$sampleid,$totalSites,$informativeSites,$meanCov,$contamCounts,$totalReads,$totalReads > 0 ? 2 * $contamCounts/$totalReads : 0,$mle,$mle_ci),"\n";
